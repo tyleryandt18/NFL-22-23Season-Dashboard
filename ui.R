@@ -11,10 +11,14 @@ ui <- fluidPage(
       checkboxGroupInput("view.allpro",
                          "View Pro Bowl / All-Pro Selections",
                          c("Pro Bowl Selections",
-                           "All-Pro Selections"))
+                           "All-Pro Selections")),
+      selectizeInput("view.pos", 
+                     "Filter Player Positions",
+                     c("Select a Position"='', "QB", "RB", "WR", "TE"),
+                     multiple = TRUE)
     ),
     mainPanel(
-      tableOutput("table.basic")
+      tableOutput("table.main")
     )
   )
 )

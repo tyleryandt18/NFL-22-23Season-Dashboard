@@ -9,11 +9,17 @@ source("Library/DataManip.R")
 source("ui.R")
 
 # Working Directory
-# setwd("/Users/tyleryandt/Desktop/Fantasy 2022 Dashboard")
+# setwd("/Users/tyleryandt/Desktop/NFL-22Season-Dashboard")
 
 # App Server ------------------------------------------------------------------
 server <- function(input, output, session) {
-  output$table.basic <- renderTable(viewAllPro(input))
+  # app_df <- reactiveVal(nfl_22)
+  # observeEvent(list(input$view.allpro, input$view.pos), {
+  #   app_df(viewAllPro(input))
+  #   app_df(viewPos(input))
+  #   output$table.main <- renderTable(app_df())
+  # })
+  output$table.main <- renderTable(viewPos(input))
 }
 
 shinyApp(ui, server)
