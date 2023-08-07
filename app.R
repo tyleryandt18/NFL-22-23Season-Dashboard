@@ -13,13 +13,7 @@ source("ui.R")
 
 # App Server ------------------------------------------------------------------
 server <- function(input, output, session) {
-  # app_df <- reactiveVal(nfl_22)
-  # observeEvent(list(input$view.allpro, input$view.pos), {
-  #   app_df(viewAllPro(input))
-  #   app_df(viewPos(input))
-  #   output$table.main <- renderTable(app_df())
-  # })
-  output$table.main <- renderTable(viewPos(input))
+  output$table.main <- renderTable(runFilters(input))
 }
 
 shinyApp(ui, server)
