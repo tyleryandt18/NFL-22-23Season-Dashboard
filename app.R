@@ -13,7 +13,12 @@ source("ui.R")
 
 # App Server ------------------------------------------------------------------
 server <- function(input, output, session) {
-  output$table.main <- renderTable(runFilters(input))
+  output$table.main <- renderTable({
+    app_df <- nfl_22 %>%
+      viewAllPro(input, .) %>%
+      viewPos(input, .) %>%
+      viewTeam(input, .)
+  })
 }
 
 shinyApp(ui, server)

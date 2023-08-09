@@ -14,7 +14,11 @@ ui <- fluidPage(
                            "All-Pro Selections")),
       selectizeInput("view.pos", 
                      "Filter Player Positions",
-                     c("Select a Position"='', "QB", "RB", "WR", "TE"),
+                     c("Select a Position"='', nfl_22$FantPos),
+                     multiple = TRUE),
+      selectizeInput("view.team", 
+                     "Filter Teams",
+                     c("Select a Team"='', nfl_22$Tm),
                      multiple = TRUE)
     ),
     mainPanel(

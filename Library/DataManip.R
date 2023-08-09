@@ -17,13 +17,6 @@ nfl_22 <- read.csv("Data/NFLData2022.csv") %>%
 
 # Data Manipulation Functions -------------------------------------------------
 
-# A general data manipulation function to run all filtering functions.
-runFilters <- function(input){
-  myData <- viewAllPro(input, nfl_22)
-  myData <- viewPos(input, myData)
-  return(myData)
-}
-
 # A function that filters the data set to see Pro Bowl and or All-Pro Selected
 # players.
 viewAllPro <- function(input, df){
@@ -55,6 +48,18 @@ viewPos <- function(input, df){
   } else {
     myData <- df %>%
       filter(FantPos %in% selected)   
+  }
+  return(myData)
+}
+
+# A function that filters the team of the players.
+viewTeam <- function(input, df){
+  selected <- input$view.team
+  if(is.null(selected)){
+    myData <- df
+  } else {
+    myData <- df %>%
+      filter(Tm %in% selected)
   }
   return(myData)
 }
